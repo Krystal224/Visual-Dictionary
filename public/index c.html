@@ -1,0 +1,63 @@
+<html>
+
+<head>
+<!--  <script src="jquery-3.4.1.min.js"></script>-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(() => {
+      $('#search_syn').click(()=> {
+        const requestURL = 'users/' + $('#nameBox').val();
+        console.log('Input value is ',requestURL)
+        $.ajax({
+          url: requestURL,
+          type:'POST',
+          // dataType:'json',
+          success: (data) => {
+            console.log('success',data);
+            // console.log(typeof data);
+            const result_len = data.length;
+            $('.all_results').empty();
+            for(var synset in data){
+              // $(".all_results").append();
+              // var class_name = data[synset].Synset_name
+              // $(".all_results").append('<div id="' +data[synset].Synset_name + '" class = "'+data[synset].Synset_name+'"></div>');
+              // $("").appendTo(class_name);
+
+              $('#Syn_name').html('Synset:  ' + data[synset].Synset_name);
+              $('#Syn_def').html('Definition  ' + data[synset].Definition);
+            }
+            // $('#Syn_name').html('Synset:  ' + data.Synset_name);
+            // $('#Syn_def').html('Definition:  ' + data.Definition);
+            // $('#Syn_Eg').html('Example:  ' + data.Example);
+          }
+        });
+      });
+    });
+  </script>
+
+  <title>Express</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+  <h1>Video Template</h1>
+  <p>Search Function</p>
+<!--  <input type="text" name="search" id="search" placeholder="Search Synsets here"  />-->
+
+  <input id="nameBox" type="'text"/>
+  <button id="search_syn">Search</button>
+  <hr>
+  <div class="container w-50 all_results">
+    <div id="Syn_name"></div>
+    <div id="Syn_def"></div>
+    <div id="Syn_Eg"></div>
+  </div>
+</body>
+
+</html>
+
+<script>
+
+</script>

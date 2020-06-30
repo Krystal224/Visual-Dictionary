@@ -1,0 +1,132 @@
+<html>
+
+<head>
+<!--  <script src="jquery-3.4.1.min.js"></script>-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="/javascripts/synset.js"></script>
+  <script src="/stylesheets/style.css"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <!-- font library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Caladea:400,700&display=swap" rel="stylesheet">
+
+  <script type="text/javascript">
+
+    $(document).ready(() => {
+
+      $.ajax('/initialize',{
+        method:'get',
+        success:(data) =>{
+          console.log("Initializing")
+          console.log(data)
+        }
+      });
+
+
+
+      $('#search_syn').click(()=> {
+        const requestURL = 'users/' + $('#nameBox').val();
+        console.log('Input value is ',requestURL)
+        $.ajax({
+          url: requestURL,
+          type:'POST',
+          // dataType:'json',
+          success: (data) => {
+
+            if(data == "'Not founded'"){
+                console.log("NOT FOUNDED")
+
+
+                $('#not_found').html("The word you searched does not exist. Please try another one.");
+            }
+            else{
+              $('#not_found').empty();
+              console.log('success',data);
+              const result_len = data.length;
+              const myNode = document.getElementById("all_results");
+              while (myNode.firstChild) {
+                myNode.removeChild(myNode.firstChild);
+                console.log("remove ele")
+              }
+              CreateSynsets(data);
+            }
+
+
+          }
+        });//end ajax
+
+      });
+
+
+     $('#nameBox').keyup(function (e){
+       console.log("Key code mode!!")
+       if (e.key == 'Enter')
+       {
+           const requestURL = 'users/' + $('#nameBox').val();
+           console.log('Input value is ',requestURL)
+           $.ajax({
+             url: requestURL,
+             type:'POST',
+             // dataType:'json',
+             success: (data) => {
+               console.log(data);
+               if(data == "Not founded"){
+                 console.log("NOT FOUNDED")
+                 $('#not_found').html("The word you searched does not exist. Please try another one.");
+               }
+               else{
+                 $('#not_found').empty();
+                 console.log("FETCH Success");
+                 console.log('success',data);
+                 const result_len = data.length;
+                 const myNode = document.getElementById("all_results");
+                 while (myNode.firstChild) {
+                   myNode.removeChild(myNode.firstChild);
+                   console.log("remove ele")
+                 }
+                 CreateSynsets(data);
+               }
+
+
+             }
+           });//end ajax
+         return false;
+       }
+     })
+    });
+
+
+  </script>
+
+  <title>Express</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+
+<div class = "banner"><h3>Logo</h3></div>
+<div>
+<!--  <h1 class="title">Video Template</h1>-->
+
+  <br>
+
+  <div class="container center">
+    <input class = "search_input" id="nameBox" style ="margin-right: 10px;" type="'text" placeholder="Search a word..."/>
+    <i id="search_syn" class="fa fa-search" style="font-size: 2.3em"></i>
+
+  </div>
+  <h2 id="not_found"></h2>
+  <div class="container center">
+    <div id = "all_results" class="row"></div>
+  </div>
+
+</div>
+</body>
+
+</html>

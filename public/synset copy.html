@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>expand detail</title>
+</head>
+
+<body>
+<script src="/stylesheets/style.css"></script>
+<style>
+    body {
+        background-color: #EBEAF6;
+    }
+
+
+    .node text { font: 12px sans-serif; }
+    .node tspan { font: 12px sans-serif; }
+
+    .link {
+        fill: none;
+        stroke: #5d47ad8f;
+        stroke-width: 3px;
+    }
+
+    /*.node text { font: 12px sans-serif; }*/
+
+    .node {
+        color: blue;
+        background-color:red;
+    }
+
+    .info{
+        color:blue;
+    }
+
+
+
+    /* The Modal (background) */
+    .box {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .box-content {
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 50%;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s
+    }
+
+    /* Add Animation */
+    @-webkit-keyframes animatetop {
+        from {top:-300px; opacity:0}
+        to {top:0; opacity:1}
+    }
+
+    @keyframes animatetop {
+        from {top:-300px; opacity:0}
+        to {top:0; opacity:1}
+    }
+
+    /* The Close Button */
+    .close {
+        color: white;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .box-header {
+        padding: 2px 5px;
+        background-color: #5d47ad;
+        color: white;
+        text-align: center;
+    }
+
+    .box-header .close {
+      margin-right:10px;
+    }
+
+    .box-body {padding: 2px 16px;}
+
+    .box-header h5{
+        padding-top:10px;
+    }
+
+
+    /*.modal-footer {*/
+    /*    padding: 2px 16px;*/
+    /*    background-color: #5cb85c;*/
+    /*    color: white;*/
+    /*}*/
+
+
+</style>
+
+
+
+
+
+<div class = "banner"><h3>Logo</h3></div>
+<div class = "container center">
+    <!--    <h5 class="logo">VT Logo</h5>-->
+
+    <br>
+    <i class="fa fa-arrow-left" style="font-size:2em" onclick="window.history.back();return false;"></i>
+    <br>
+    <br>
+    <div class="container synset_detail">
+        <h2 class ="title" id = "synset_name"></h2>
+        <br>
+        <p id="def"></p>
+        <p id="Eg"></p>
+        <h5>Synonyms&nbsp &nbsp</h5>
+        <div id = "all_results"></div>
+
+
+    </div>
+
+    <div class="container synset_detail">
+        <h5>Hyponym Cards</h5>
+        <div id = "hyponym_card" class="card_box"></div>
+        <br>
+        <h5>Path Cards</h5>
+        <div id = "path_card" class="card_box"></div>
+    </div>
+
+    <br>
+<!--    <svg></svg>-->
+
+
+    <!-- The Modal -->
+    <div id="myModal" class="box">
+
+        <!-- Modal content -->
+        <div class="box-content">
+            <div class="box-header">
+                <span class="close">&times;</span>
+                <h5 id="box_name">Modal Header</h5>
+            </div>
+            <div class="box-body">
+                <p id = "box_def">Some text in the Modal Body</p>
+                <p id = "box_eg">Some other text...</p>
+            </div>
+            <!--            <div class="modal-footer">-->
+            <!--                <h3>Modal Footer</h3>-->
+            <!--            </div>-->
+        </div>
+
+    </div>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<!--<script src="/stylesheets/style.css"></script>-->
+<script src="/javascripts/synset_detail.js"></script>
+<script src="/javascripts/Hyponym_card.js"></script>
+<script src="/javascripts/Path_card.js"></script>
+<link rel="stylesheet" href="/stylesheets/style.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<!-- font library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
+
+<!-- load the d3.js library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.12.2/d3.min.js"></script>
+<!--<script src="https://d3js.org/d3.v4.min.js"></script>-->
+<script type="text/javascript">
+// <!-- This below is used to extract the word from url and query database of this word from backend -->
+
+
+//Store svg data as global variable
+
+var test_node = [{
+        "name": "object.n.01",
+        "Definition": "a tangible and visible entity; an entity that can cast a shadow",
+        "Example": [
+            "it was full of rackets, balls and other objects"
+        ],
+        "Synonym": [
+            "object",
+            "physical_object"
+        ],
+        "parent": "physical_entity.n.01",
+        "children": []
+},
+    { "name": "object.n.02",
+    "Definition": "a tangible and visible entity; an entity that can cast a shadow",
+    "Example": [
+    "it was full of rackets, balls and other objects"
+],
+    "Synonym": [
+    "object",
+    "physical_object"
+],
+    "parent": "physical_entity.n.01",
+    "children": []},
+    { "name": "object.n.03",
+        "Definition": "a tangible and visible entity; an entity that can cast a shadow",
+        "Example": [
+            "it was full of rackets, balls and other objects"
+        ],
+        "Synonym": [
+            "object",
+            "physical_object"
+        ],
+        "parent": "physical_entity.n.01",
+        "children": []}
+];
+
+let svg_data;
+let coordX;
+let coordY;
+
+var margin = {top: 40, right: 120, bottom: 40, left: 120},
+    width = 900 - margin.right - margin.left,
+    height = 300 - margin.top - margin.bottom;
+
+
+// var tree = d3.layout.tree()
+//     .size([height, width]);
+//
+// var diagonal = d3.svg.diagonal()
+//     .projection(function(d) { return [d.x, d.y]; });
+
+var svg = d3.select("body").append("svg")
+    // .attr("width", width + margin.right + margin.left)
+    // .attr("height", height + margin.top + margin.bottom)
+    .attr("width",900)
+    .attr("height",300);
+    // .append("g")
+    // .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+svg.append("rect")
+    .attr("width", "100%")
+    .attr("height", "100%")
+    .attr("fill", "yellow");
+
+var tree = d3.layout.tree()
+    .size([height, width]);
+
+var diagonal = d3.svg.diagonal()
+    .projection(function(d) { return [d.x, d.y]; });
+
+let root;
+
+$(document).ready(() => {
+
+        //Extract the word
+        let word = window.location.href;
+        word = word.split('?')[1]
+
+        //Query the extracted word from backend
+        word = 'synsets/' + word;
+        console.log("read text: ",word)
+
+
+        $.ajax({
+            url: word,
+            type:'GET',
+            success: (data)=>{
+                console.log("request success!")
+                svg_data = data;
+                console.log('SVG Data is: ',svg_data);
+                var tree = d3.layout.tree()
+                    .size([height, width]);
+
+                var diagonal = d3.svg.diagonal()
+                    .projection(function(d) { return [d.x, d.y]; });
+                root = svg_data
+                update(root);
+                console.log("Getting g")
+
+            }
+
+
+    });
+
+    });//end of document.ready
+
+
+var i = 0,
+    duration = 750;
+
+function update(source) {
+
+    console.log("Updating tree");
+    // console.log(source);
+    // var tree = d3.layout.tree()
+    //     .size([height, width]);
+    //
+    // var diagonal = d3.svg.diagonal()
+    //     .projection(function(d) { return [d.x, d.y]; });
+
+    // Compute the new tree layout.
+
+    var nodes = tree.nodes(root).reverse(),
+        links = tree.links(nodes);
+
+
+
+    // Normalize for fixed-depth.
+    nodes.forEach(function(d) { d.y = d.depth * 100; });
+
+
+    let g = svg.append("g")
+        .attr("class","hhh")
+        .on("click",function(d){
+            console.log("Large group hhh")
+        })
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+    var node = g.selectAll("g")
+        .data(nodes, function(d) { return d.id || (d.id = ++i); })
+
+    // // Enter any new modes at the parent's previous position.
+    // var nodeEnter = node.enter().append('g')
+    //     .attr('class', 'node')
+    //     .attr("transform", function(d) {
+    //         return "translate(" + source.y0 + "," + source.x0 + ")";
+    //         console.log("source.y0 ", source.y0)
+    //     });
+        // .on('click', click);
+
+    g.on('mousedown',function(){
+        coordX = d3.mouse(this)[0];
+        coordY = d3.mouse(this)[1];
+        console.log("Getting g")
+    })
+        .call(d3.drag()
+            .on("drag",dragged));
+
+
+    // // Update nodes.
+    // var nodeUpdate = nodeEnter.merge(node);
+    //
+    // // Transition to the proper position for the node
+    // nodeUpdate.transition()
+    //     .duration(duration)
+    //     .attr("transform", function(d) {
+    //         return "translate(" + d.y + "," + d.x + ")";
+    //     });
+    // // Remove any exiting nodes
+    // var nodeExit = node.exit().transition()
+    //     .duration(duration)
+    //     .attr("transform", function(d) {
+    //         return "translate(" + source.y + "," + source.x + ")";
+    //     })
+    //     .remove();
+
+
+    // Enter the nodes.
+    var nodeEnter = node.enter().append("g")
+        .attr("class","leaf")
+        .attr("transform", function(d) {
+            return "translate(" + d.x + "," + d.y + ")"; });
+
+
+
+
+    nodeEnter.append("text")
+        .attr("id",function(d){
+            let idd = d.name
+            idd = idd.split('.').join("")
+            return idd
+        })
+        .attr("class","node_title")
+        .attr("width",10)
+        .attr("y", function(d) {
+            return d.children || d._children ? -18 : 18; })
+        .attr("dy", "0.5em")
+        .attr("text-anchor", "middle")
+        // .on("click",function(d){
+        //     console.log("ready to click")
+        //     myFunction(d)
+        // })
+        // .on('click', datum => {
+        // console.log("clicked data is ",datum); // the datum for the clicked circle
+        //     datum.children = [test_node]
+        //     // console.log(svg_data)
+        //     // selected_function()
+        //     // update(datum)
+        //
+        // })
+        .on("click",click)
+        // .on("click",function(d){
+        //     d.children = test_node
+        //     svg.selectAll("*").remove()
+        //     svg.append("rect")
+        //         .attr("width", "100%")
+        //         .attr("height", "100%")
+        //         .attr("fill", "yellow");
+        //     update(svg_data);
+        // })
+        .on("mouseover", handleMouseOver)
+        .on("mouseout", handleMouseOut)
+        .text(function(d) {
+            return d.name;
+        })
+        .style("font-size","15px")
+        .style("fill","#5d47ad")
+        .style("fill-opacity", 1);
+
+    function handleMouseOver(d, i) {
+        // Use D3 to select element, change color and size
+        d3.select(this).style(
+            "fill", "orange")
+
+    }
+
+    function handleMouseOut(d, i) {
+        // Use D3 to select element, change color and size
+        d3.select(this).style(
+            "fill", "#5d47ad")
+
+    }
+
+
+    // // UPDATE
+    // var nodeUpdate = nodeEnter.merge(node);
+    // // Transition to the proper position for the node
+    // nodeUpdate.transition()
+    //     .duration(duration)
+    //     .attr("transform", function(d) {
+    //         return "translate(" + d.x + "," + d.y + ")";
+    //     });
+    //
+    // // Remove any exiting nodes
+    // var nodeExit = node.exit().transition()
+    //     .duration(duration)
+    //     .attr("transform", function(d) {
+    //         return "translate(" + source.x + "," + source.y + ")";
+    //     })
+    //     .remove();
+
+
+    // Declare the links…
+    var link = g.selectAll("path.link")
+        .data(links, function(d) { return d.target.id; });
+
+    // Enter the links.
+    var linkEnter = link.enter().insert("path", "g")
+        .attr("class", "link")
+        .attr('d', diagonal);
+
+    // // UPDATE
+    // // Transition back to the parent element position
+    // var linkUpdate = linkEnter.merge(link);
+    // linkUpdate.transition()
+    //     .duration(duration)
+    //     .attr('d', function(d){ return diagonal(d, d.parent) });
+    //
+    // // Remove any exiting links
+    // var linkExit = link.exit().transition()
+    //     .duration(duration)
+    //     .attr('d', diagonal)
+    //     .remove();
+    //
+    // // Store the old positions for transition.
+    // nodes.forEach(function(d){
+    //     d.x0 = d.x;
+    //     d.y0 = d.y;
+    // });
+
+
+
+}
+
+// function selected_function(){
+//     console.log("!!!")
+//     console.log(svg_data)
+//     update(svg_data)
+// }
+
+function click(d){
+    d.children = test_node
+    update(d)
+    // let bounding = d.getBoundingClientRect('#entityn01')
+    // if(bounding.left<0){
+    //     console.log("OUTSIDE!")
+    // }
+}
+
+let bounding = document.getBoundingClientRect('#entityn01')
+if(bounding.top<0){
+    console.log("OUTSIDE!")
+}
+
+function dragged(){
+    console.log("Draggggg")
+    var transX = d3.event.x-coordX
+    var transY = d3.event.y-coordY
+    d3.select(this).attr("transform","translate("+transX+" "+transY+")")
+
+
+
+    // //    Distance since dragged
+    // if(transY < -10 ){
+    //     console.log("start loading more...");
+    //
+    //     let send_data = {};
+    //
+    //     //Find new names to query based on last layer SVG_data
+    //     let query_name_list = [];
+    //     let children_num = svg_data.children.length;
+    //     let index;
+    //     for (index = 0; index < children_num; index++){
+    //         query_name_list.push(svg_data.children[index].name)
+    //     }
+    //
+    //     send_data["0"] = query_name_list;
+    //
+    //     console.log(children_num);
+    //     console.log(send_data);
+    //
+    //     //Query new data based on query_name_list
+    //     $.ajax('/add_nodes',{
+    //         url:'add_nodes',
+    //         type:'POST',
+    //         data:send_data,
+    //         success:(data) =>{
+    //             console.log("Query new data")
+    //             //insert new data into svg_data
+    //             let index2;
+    //             for(index2 = 0; index2<children_num;index2++){
+    //                 svg_data.children[index2]["children"] = data[index2]
+    //             }
+    //
+    //             console.log('New Svg_data is:', svg_data);
+    //
+    //             svg.selectAll("*").remove()
+    //             svg.append("rect")
+    //                 .attr("width", "100%")
+    //                 .attr("height", "100%")
+    //                 .attr("fill", "yellow");
+    //             update(svg_data);
+    //
+    //
+    //         }
+    //     });
+    //
+    // }
+
+
+
+
+}
+
+function myFunction(input){
+    let data = input
+    let index = data.name
+    index = index.split('.').join("");
+    index = "#" + index
+
+    console.log(data)
+
+    $(document).on("click", index,function() {
+        console.log('HHHHHHH')
+        console.log(data.Definition)
+
+        let modal = document.getElementById("myModal")
+
+        modal.style.display = "block";
+
+        var span = document.getElementsByClassName("close")[0];
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        //Give corresponding Def
+        let def = document.getElementById("box_def");
+        def.innerHTML = data.Definition
+
+        let eg = document.getElementById("box_eg");
+        eg.innerHTML = data.Example
+
+        let n = document.getElementById("box_name");
+        n.innerHTML = data.name
+    });
+}
+
+
+
+</script>
+
+
+
+</html>

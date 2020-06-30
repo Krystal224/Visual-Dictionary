@@ -1,0 +1,283 @@
+{
+  "entity.n.01": {
+    "Synset_name": "entity.n.01",
+    "Definition": "that which is perceived or known or inferred to have its own distinct existence (living or nonliving)",
+    "Example": [],
+    "Synonym": [
+      "entity"
+    ],
+    "Hyperyms": "",
+    "Hyponyms_list": [
+      "abstraction.n.06",
+      "physical_entity.n.01",
+      "thing.n.08"
+    ],
+    "Hyper_path_list": [
+      "entity.n.01"
+    ]
+  },
+  "physical_entity.n.01": {
+    "Synset_name": "physical_entity.n.01",
+    "Definition": "an entity that has physical existence",
+    "Example": [],
+    "Synonym": [
+      "physical_entity"
+    ],
+    "Hyperyms": "entity.n.01",
+    "Hyponyms_list": [
+      "causal_agent.n.01",
+      "matter.n.03",
+      "object.n.01",
+      "process.n.06",
+      "substance.n.04",
+      "thing.n.12"
+    ],
+    "Hyper_path_list": [
+      "entity.n.01",
+      "physical_entity.n.01"
+    ]
+  },
+  "abstraction.n.06": {
+    "Synset_name": "abstraction.n.06",
+    "Definition": "a general concept formed by extracting common features from specific examples",
+    "Example": [],
+    "Synonym": [
+      "abstraction",
+      "abstract_entity"
+    ],
+    "Hyperyms": "entity.n.01",
+    "Hyponyms_list": [
+      "attribute.n.02",
+      "communication.n.02",
+      "group.n.01",
+      "measure.n.02",
+      "otherworld.n.01",
+      "psychological_feature.n.01",
+      "relation.n.01",
+      "set.n.02"
+    ],
+    "Hyper_path_list": [
+      "entity.n.01",
+      "abstraction.n.06"
+    ]
+  },
+  "thing.n.12": {
+    "Synset_name": "thing.n.12",
+    "Definition": "a separate and self-contained entity",
+    "Example": [],
+    "Synonym": [
+      "thing"
+    ],
+    "Hyperyms": "physical_entity.n.01",
+    "Hyponyms_list": [
+      "body_of_water.n.01",
+      "inessential.n.01",
+      "necessity.n.02",
+      "part.n.03",
+      "reservoir.n.04",
+      "subject.n.02",
+      "unit.n.05",
+      "variable.n.01"
+    ],
+    "Hyper_path_list": [
+      "entity.n.01",
+      "physical_entity.n.01",
+      "thing.n.12"
+    ]
+  },
+  "object.n.01": {
+    "Synset_name": "object.n.01",
+    "Definition": "a tangible and visible entity; an entity that can cast a shadow",
+    "Example": [
+      "it was full of rackets, balls and other objects"
+    ],
+    "Synonym": [
+      "object",
+      "physical_object"
+    ],
+    "Hyperyms": "physical_entity.n.01",
+    "Hyponyms_list": [
+      "catch.n.04",
+      "charm.n.03",
+      "commemorative.n.01",
+      "curio.n.01",
+      "discard.n.01",
+      "draw.n.04",
+      "film.n.04",
+      "finding.n.03",
+      "floater.n.07",
+      "fomite.n.01",
+      "geological_formation.n.01",
+      "growth.n.07",
+      "hail.n.02",
+      "head.n.17",
+      "hoodoo.n.04",
+      "ice.n.02",
+      "je_ne_sais_quoi.n.01",
+      "keepsake.n.01",
+      "land.n.02",
+      "land.n.04",
+      "location.n.01",
+      "makeweight.n.01",
+      "moon.n.02",
+      "neighbor.n.02",
+      "paring.n.02",
+      "part.n.02",
+      "property.n.05",
+      "remains.n.01",
+      "ribbon.n.01",
+      "shiner.n.02",
+      "snake.n.05",
+      "stuff.n.02",
+      "triviality.n.03",
+      "vagabond.n.01",
+      "wall.n.02",
+      "web.n.01",
+      "whole.n.02"
+    ],
+    "Hyper_path_list": [
+      "entity.n.01",
+      "physical_entity.n.01",
+      "object.n.01"
+    ]
+  },
+  "whole.n.02": {
+    "Synset_name": "whole.n.02",
+    "Definition": "an assemblage of parts that is regarded as a single entity",
+    "Example": [
+      "how big is that part compared to the whole?",
+      "the team is a unit"
+    ],
+    "Synonym": [
+      "whole",
+      "unit"
+    ],
+    "Hyperyms": "object.n.01",
+    "Hyponyms_list": [
+      "artifact.n.01",
+      "assembly.n.05",
+      "congener.n.03",
+      "item.n.03",
+      "living_thing.n.01",
+      "natural_object.n.01",
+      "sum.n.05"
+    ],
+    "Hyper_path_list": [
+      "entity.n.01",
+      "physical_entity.n.01",
+      "object.n.01",
+      "whole.n.02"
+    ]
+  },
+  "congener.n.03": {
+    "Synset_name": "congener.n.03",
+    "Definition": "a whole (a thing or person) of the same kind or category as another",
+    "Example": [
+      "lard was also used, though its congener, butter, was more frequently employed",
+      "the American shopkeeper differs from his European congener"
+    ],
+    "Synonym": [
+      "congener"
+    ],
+    "Hyperyms": "whole.n.02",
+    "Hyponyms_list": [],
+    "Hyper_path_list": [
+      "entity.n.01",
+      "physical_entity.n.01",
+      "object.n.01",
+      "whole.n.02",
+      "congener.n.03"
+    ]
+  },
+  "living_thing.n.01": {
+    "Synset_name": "living_thing.n.01",
+    "Definition": "a living (or once living) entity",
+    "Example": [],
+    "Synonym": [
+      "living_thing",
+      "animate_thing"
+    ],
+    "Hyperyms": "whole.n.02",
+    "Hyponyms_list": [
+      "biont.n.01",
+      "cell.n.02",
+      "life.n.10",
+      "organism.n.01"
+    ],
+    "Hyper_path_list": [
+      "entity.n.01",
+      "physical_entity.n.01",
+      "object.n.01",
+      "whole.n.02",
+      "living_thing.n.01"
+    ]
+  },
+  "organism.n.01": {
+    "Synset_name": "organism.n.01",
+    "Definition": "a living thing that has (or can develop) the ability to act or function independently",
+    "Example": [],
+    "Synonym": [
+      "organism",
+      "being"
+    ],
+    "Hyperyms": "living_thing.n.01",
+    "Hyponyms_list": [
+      "aerobe.n.01",
+      "amphidiploid.n.01",
+      "anaerobe.n.01",
+      "animal.n.01",
+      "animalcule.n.01",
+      "atavist.n.01",
+      "benthos.n.02",
+      "carrier.n.11",
+      "clone.n.02",
+      "commensal.n.01",
+      "conspecific.n.01",
+      "denizen.n.02",
+      "diploid.n.01",
+      "dwarf.n.03",
+      "eukaryote.n.01",
+      "fungus.n.01",
+      "haploid.n.01",
+      "heteroploid.n.01",
+      "heterotroph.n.01",
+      "host.n.03",
+      "hybrid.n.03",
+      "individual.n.02",
+      "katharobe.n.01",
+      "mascot.n.01",
+      "microorganism.n.01",
+      "mutant.n.01",
+      "myrmecophile.n.01",
+      "native.n.03",
+      "nekton.n.01",
+      "nonvascular_organism.n.01",
+      "parasite.n.01",
+      "parent.n.02",
+      "person.n.01",
+      "plankton.n.01",
+      "plant.n.02",
+      "polymorph.n.01",
+      "polyploid.n.01",
+      "postdiluvian.n.01",
+      "prokaryote.n.01",
+      "recombinant.n.01",
+      "relative.n.02",
+      "relict.n.01",
+      "saprobe.n.01",
+      "saprophyte.n.01",
+      "sitter.n.02",
+      "stander.n.01",
+      "utterer.n.01",
+      "zooid.n.01"
+    ],
+    "Hyper_path_list": [
+      "entity.n.01",
+      "physical_entity.n.01",
+      "object.n.01",
+      "whole.n.02",
+      "living_thing.n.01",
+      "organism.n.01"
+    ]
+  }
+}

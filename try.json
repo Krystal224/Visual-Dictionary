@@ -1,0 +1,215 @@
+{
+    "breathe.v.01": {
+        "Synset_name": "breathe.v.01",
+        "Definition": "draw air into, and expel out of, the lungs",
+        "Example": [
+            "I can breathe better when the air is clean",
+            "The patient is respiring"
+        ],
+        "Synonym": [
+            "breathe",
+            "take_a_breath",
+            "respire",
+            "suspire"
+        ],
+        "Hyperyms": "",
+        "Hyponyms_list": [],
+        "Hyper_path_list": [
+            "breathe.v.01"
+        ]
+    },
+    "respire.v.02": {
+        "Synset_name": "respire.v.02",
+        "Definition": "undergo the biomedical and metabolic processes of respiration by taking up oxygen and producing carbon monoxide",
+        "Example": [],
+        "Synonym": [
+            "respire"
+        ],
+        "Hyperyms": "undergo.v.01",
+        "Hyponyms_list": [
+            "experience.v.01",
+            "experience.v.03",
+            "labor.v.03",
+            "respire.v.02",
+            "take.v.19"
+        ],
+        "Hyper_path_list": [
+            "change.v.02",
+            "undergo.v.01",
+            "respire.v.02",
+            "respire.v.02",
+            "respire.v.02",
+            "respire.v.02",
+            "respire.v.02",
+            "respire.v.02"
+        ]
+    },
+    "respire.v.01": {
+        "Synset_name": "respire.v.01",
+        "Definition": "breathe easily again, as after exertion or anxiety",
+        "Example": [],
+        "Synonym": [
+            "respire"
+        ],
+        "Hyperyms": "breathe.v.01",
+        "Hyponyms_list": [
+            "choke.v.01",
+            "exhale.v.01",
+            "hiccup.v.01",
+            "hyperventilate.v.02",
+            "inhale.v.02",
+            "respire.v.01",
+            "sigh.v.01",
+            "snore.v.01",
+            "wheeze.v.01",
+            "yawn.v.01"
+        ],
+        "Hyper_path_list": [
+            "breathe.v.01",
+            "respire.v.01"
+        ]
+    },
+    "choke.v.01": {
+        "Synset_name": "choke.v.01",
+        "Definition": "breathe with great difficulty, as when experiencing a strong emotion",
+        "Example": [
+            "She choked with emotion when she spoke about her deceased husband"
+        ],
+        "Synonym": [
+            "choke"
+        ],
+        "Hyperyms": "breathe.v.01",
+        "Hyponyms_list": [
+            "choke.v.01",
+            "exhale.v.01",
+            "hiccup.v.01",
+            "hyperventilate.v.02",
+            "inhale.v.02",
+            "respire.v.01",
+            "sigh.v.01",
+            "snore.v.01",
+            "wheeze.v.01",
+            "yawn.v.01"
+        ],
+        "Hyper_path_list": [
+            "breathe.v.01",
+            "choke.v.01"
+        ]
+    },
+    "hyperventilate.v.02": {
+        "Synset_name": "hyperventilate.v.02",
+        "Definition": "breathe excessively hard and fast",
+        "Example": [
+            "The mountain climber started to hyperventilate"
+        ],
+        "Synonym": [
+            "hyperventilate"
+        ],
+        "Hyperyms": "breathe.v.01",
+        "Hyponyms_list": [
+            "choke.v.01",
+            "exhale.v.01",
+            "hiccup.v.01",
+            "hyperventilate.v.02",
+            "inhale.v.02",
+            "respire.v.01",
+            "sigh.v.01",
+            "snore.v.01",
+            "wheeze.v.01",
+            "yawn.v.01"
+        ],
+        "Hyper_path_list": [
+            "breathe.v.01",
+            "hyperventilate.v.02"
+        ]
+    },
+    "hyperventilate.v.01": {
+        "Synset_name": "hyperventilate.v.01",
+        "Definition": "produce hyperventilation in",
+        "Example": [
+            "The nurses had to hyperventilate the patient"
+        ],
+        "Synonym": [
+            "hyperventilate"
+        ],
+        "Hyperyms": "treat.v.03",
+        "Hyponyms_list": [
+            "administer.v.04",
+            "analyze.v.04",
+            "bleed.v.02",
+            "cauterize.v.01",
+            "correct.v.08",
+            "cup.v.03",
+            "detox.v.01",
+            "doctor.v.02",
+            "dress.v.14",
+            "hyperventilate.v.01",
+            "insufflate.v.02",
+            "iodize.v.02",
+            "irrigate.v.02",
+            "manipulate.v.06",
+            "massage.v.02",
+            "medicate.v.02",
+            "nurse.v.01",
+            "operate_on.v.01",
+            "pack.v.13",
+            "purge.v.07",
+            "remedy.v.02",
+            "shock.v.06",
+            "splint.v.01",
+            "vet.v.03"
+        ],
+        "Hyper_path_list": [
+            "treat.v.03",
+            "hyperventilate.v.01"
+        ]
+    },
+    "aspirate.v.03": {
+        "Synset_name": "aspirate.v.03",
+        "Definition": "suck in (air)",
+        "Example": [],
+        "Synonym": [
+            "aspirate"
+        ],
+        "Hyperyms": "inhale.v.02",
+        "Hyponyms_list": [
+            "aspirate.v.03",
+            "huff.v.01",
+            "puff.v.02",
+            "sniff.v.02",
+            "snuff.v.02",
+            "snuffle.v.02"
+        ],
+        "Hyper_path_list": [
+            "breathe.v.01",
+            "inhale.v.02",
+            "aspirate.v.03"
+        ]
+    },
+    "burp.v.01": {
+        "Synset_name": "burp.v.01",
+        "Definition": "expel gas from the stomach",
+        "Example": [
+            "In China it is polite to burp at the table"
+        ],
+        "Synonym": [
+            "burp",
+            "bubble",
+            "belch",
+            "eruct"
+        ],
+        "Hyperyms": "emit.v.01",
+        "Hyponyms_list": [
+            "bubble.v.01",
+            "burp.v.01",
+            "exhale.v.02",
+            "force_out.v.08",
+            "radiate.v.02"
+        ],
+        "Hyper_path_list": [
+            "exhaust.v.05",
+            "emit.v.01",
+            "burp.v.01"
+        ]
+    }
+}

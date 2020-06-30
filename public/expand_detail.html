@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>expand detail</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="/stylesheets/style.css"></script>
+<script src="/javascripts/synset.js"></script>
+<link rel="stylesheet" href="/stylesheets/style.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<!-- font library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
+
+<script type="text/javascript">
+// <!-- This below is used to extract the word from url and query database of this word from backend -->
+    $(document).ready(() => {
+        //Extract the word
+        let word = window.location.href;
+        word = word.split('?')[1]
+
+        //Query the extracted word from backend
+        word = 'results/' + word;
+        // console.log("read text: ",word)
+
+        $.ajax({
+            url: word,
+            type:'GET',
+            success: (data)=>{
+                console.log("request success!")
+                console.log(data);
+                CreateSynsets(data);
+            }
+        });
+    });
+
+</script>
+<style>
+    body {
+        background-color: #EBEAF6;
+    }
+</style>
+
+<body>
+
+<div class = "banner"><h3>Logo</h3></div>
+<div class = "container center">
+
+
+    <br>
+    <i class="fa fa-arrow-left" style="font-size:2em" onclick="window.history.back();"></i>
+    <br>
+    <div id = "all_results" class="row"></div>
+
+</div>
+
+</body>
+</html>
