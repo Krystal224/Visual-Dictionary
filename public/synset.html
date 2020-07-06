@@ -830,21 +830,30 @@ console.log("click coordinate ",d.x)
             console.log('root is ',root)
 
             var previousRoot = root
-            previousRoot.depth = previousRoot.depth -1
-            previousRoot.height = previousRoot.height -1
-
+            // previousRoot.depth = previousRoot.depth -1
+            // previousRoot.height = previousRoot.height -1
+            //
             var newaddUp = {
                 name: 600,
                 children: [previousRoot]
             }
+            //
+            // var newNodeUp = d3.hierarchy(newaddUp);
+            // newNodeUp.depth = root.depth;
+            // newNodeUp.height = root.height;
+            // newNodeUp.parent = null;
+            //
+            // previousRoot.parent = newNodeUp
+            // root = newNodeUp
 
             var newNodeUp = d3.hierarchy(newaddUp);
             newNodeUp.depth = root.depth;
-            newNodeUp.height = root.height;
+            newNodeUp.height = root.height+1;
+            newNodeUp.x0 = 0;
+            newNodeUp.y0 = width/2;
             newNodeUp.parent = null;
-
-            previousRoot.parent = newNodeUp
             root = newNodeUp
+
 
             console.log("after change, root is", root)
 
