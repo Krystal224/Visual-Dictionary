@@ -384,7 +384,7 @@ function update(source){
         .attr("transform", function(d) {
             console.log("Add source:", source.x0)
             console.log("source is ",source)
-            return "translate(" + source.x0 + "," + source.y0 + ")";
+            return "translate(" + d.x0 + "," + d.y0 + ")";
         });
 
         // .on("mouseover",function(d,i){
@@ -731,17 +731,20 @@ console.log("click coordinate ",d.x)
                     element.data.children.push(newNode.data);
                     console.log('add one new node')
                     add_list.push(element)
+                    nodes.push(element)
 
                 }
 
             })
 
             //update them all together
-            add_list.forEach((item) => {
-                console.log("update once")
-                console.log(item)
-                update(item)
-            })
+            // add_list.forEach((item) => {
+            //     console.log("update once")
+            //     console.log(item)
+            //     update(item)
+            // })
+
+            update(1)
 
             //Enable multiple time drag up -> Set drag_index back to initial
             // drag_index = 0
@@ -864,7 +867,6 @@ console.log("click coordinate ",d.x)
 
 
             console.log("after change, root is", root)
-
             update(newNodeUp)
             
         }
